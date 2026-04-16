@@ -1,0 +1,31 @@
+embedding:
+  model: all-MiniLM-L6-v2
+  hash_cache: ./embedding_cache.json
+
+llm:
+  model: llama-3.3-70b-versatile
+  confidence_threshold: 0.65
+  max_tokens: 2048
+
+pipeline:
+  k_batches: 16
+  coherence_low: 0.55
+  coherence_high: 0.85
+  max_coherence_iterations: 5
+
+pusher:
+  default_interval_minutes: 45
+  public_repo_dir: ./public_clone
+
+private_repo_dir: ./private_clone
+output_dir: ./output
+
+# ── Phase 2 ──────────────────────────────────────────────
+persona:
+  hackathon_start: null          # ISO datetime, overridden by CLI --hackathon-start
+  hackathon_hours: 24            # duration of the hackathon window in hours
+  default_persona: null          # if null, use LLM recommender
+
+watcher:
+  poll_interval_seconds: 300     # 5 minutes default
+  enabled: true
